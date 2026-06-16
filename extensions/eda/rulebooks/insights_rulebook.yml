@@ -1,0 +1,49 @@
+---
+
+# example_rulebook.yaml
+- name: ServiceNow Incidents out of Red Hat Insights
+  hosts: localhost
+  sources:
+    - redhatinsights.eda.insights:
+        host: 0.0.0.0
+        port: 10000
+        #token: "{{ SECRET }}"
+  rules:
+    - name: Match Advisor Recommendation Event
+      condition:
+        event.payload.application == "advisor"
+        and event.payload.event_type == "new-recommendation"
+      actions:
+        - print_event:
+            pretty: true
+        # - run_job_template:
+        #     organization: "Default"
+        #     name: "AIOps: XXX"
+
+    - name: match vulnerability event
+      condition: |-
+        event.payload.application == "vulnerability"
+        and event.payload.event_type in [
+          "new-recommendation",
+          "any-cve-known-exploit",
+          "new-cve-cvss",
+          "new-cve-severity",
+          "new-cve-security-rule"
+        ]
+      actions:
+        - print_event:
+            pretty: true
+        # - run_job_template:
+        #     organization: "Default"
+        #     name: "AIOps: XXX"
+
+    - name: Match Compliance Below Threshold
+      condition:
+        event.payload.application == "compliance"
+        and event.payload.event_type == "compliance-below-threshold"
+      actions:
+        - print_event:
+            pretty: true
+        # - run_job_template:
+        #     organization: "Default"
+        #     name: "AIOps: XXX"          
