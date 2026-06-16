@@ -20,7 +20,7 @@
         #     organization: "Default"
         #     name: "AIOps: XXX"
         # labels:
-        #   - EDA
+        #   - EDA Lightspeed
 
     - name: match vulnerability event
       condition: |-
@@ -39,7 +39,7 @@
         #     organization: "Default"
         #     name: "AIOps: XXX"
         # labels:
-        #   - EDA
+        #   - EDA Lightspeed
 
     - name: Match Compliance Below Threshold
       condition:
@@ -52,4 +52,4 @@
         #     organization: "Default"
         #     name: "AIOps: XXX"
         # labels:
-        #   - EDA
+        #   - EDA Lightspeed
