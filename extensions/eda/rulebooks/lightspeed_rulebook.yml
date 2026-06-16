@@ -1,7 +1,7 @@
 ---
 
 # example_rulebook.yaml
-- name: ServiceNow Incidents out of Red Hat Insights
+- name: Red Hat Insights (Lightspeed) XXX
   hosts: localhost
   sources:
     - redhatinsights.eda.insights:
