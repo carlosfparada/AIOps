@@ -4,4 +4,4 @@
 sed 's/PasswordAuthentication no/PasswordAuthentication yes/' -i /etc/ssh/sshd_config.d/50-cloud-init.conf
 systemctl restart sshd
 # set username password
-echo "{{ ec2_rhel_pass }}" | passwd --stdin {{ ec2_rhel_user }}
+echo "{{ ec2_rhel_pass1 }}" | passwd --stdin {{ ec2_rhel1_user }}
