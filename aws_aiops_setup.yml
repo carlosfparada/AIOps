@@ -31,7 +31,7 @@
         var: hostvars[inventory_hostname].tags.Name
 
     - name: Unregister the insights client
-      insights_register:
+      redhatinsights.insights.insights_register:
         state: absent
       become: true 
 
