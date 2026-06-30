@@ -16,6 +16,8 @@
       condition:
         event.payload.application == "advisor"
         and event.payload.event_type == "new-recommendation"
+        # event.payload.application == "malware-detection"
+        # and event.payload.event_type == "detected-malware"
       actions:
         - print_event:
             pretty: true
