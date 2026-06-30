@@ -1,0 +1,32 @@
+---
+
+- name: Get nodes from Inventory and add to Groups
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - include_role: 
+      name: utils_hosts_aws
+
+
+- name: RHELs with Lightspeed Action
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files: vars/main.yml
+  tasks:
+
+    - name: Set provider
+      set_fact: 
+        panos_provider: 
+          ip_address: "{{ groups['rhel'][0] }}"
+          username: "{{ ansible_user }}"
+          password: "{{ ansible_ssh_pass }}"
+
+    - name: Hostvars
+      debug:
+        var: hostvars['localhost']
+
+    - name: AIOps Lightspeed action payload
+      set_fact:
+        payload: "{{ ansible_eda.event.payload }}"
