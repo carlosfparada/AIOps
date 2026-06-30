@@ -15,7 +15,7 @@
   rules:
     - name: Always true
       condition:
-        true == true
+        event.payload is defined
       actions:
         - print_event:
             pretty: true
