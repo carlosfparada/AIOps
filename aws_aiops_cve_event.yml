@@ -61,3 +61,4 @@
           Content-Type: "application/json"
           Accept: "application/json; indent=4"
         validate_certs: false
+      delegate_to: localhost
