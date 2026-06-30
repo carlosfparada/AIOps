@@ -23,22 +23,7 @@
             organization: "Default"
             name: "AWS AIOps: X. Action"
             labels:
-              - EDA Lightspeed
-
-    - name: Match Advisor Recommendation Event
-      condition:
-        event.payload.application == "advisor"
-        and event.payload.event_type == "new-recommendation"
-        # event.payload.application == "malware-detection"
-        # and event.payload.event_type == "detected-malware"
-      actions:
-        - print_event:
-            pretty: true
-        - run_job_template:
-            organization: "Default"
-            name: "AWS AIOps: X. Action"
-            labels:
-              - EDA Lightspeed
+              - EDA Lightspeed all
 
     - name: match vulnerability event
       condition: |-
@@ -53,11 +38,26 @@
       actions:
         - print_event:
             pretty: true
-        # - run_job_template:
-        #     organization: "Default"
-        #     name: "AIOps: XXX"
-        # labels:
-        #   - EDA Lightspeed
+        - run_job_template:
+            organization: "Default"
+            name: "AWS AIOps: X. Action"
+            labels:
+              - EDA Lightspeed vulnerability
+
+    - name: Match Advisor Recommendation Event
+      condition:
+        event.payload.application == "advisor"
+        and event.payload.event_type == "new-recommendation"
+        # event.payload.application == "malware-detection"
+        # and event.payload.event_type == "detected-malware"
+      actions:
+        - print_event:
+            pretty: true
+        - run_job_template:
+            organization: "Default"
+            name: "AWS AIOps: X. Action"
+            labels:
+              - EDA Lightspeed Advisor
 
     - name: Match Compliance Below Threshold
       condition:
